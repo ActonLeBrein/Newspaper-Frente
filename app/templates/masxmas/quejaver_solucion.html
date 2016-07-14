@@ -1,0 +1,55 @@
+{% extends 'masxmas/admin.html' %}
+{% block content %}
+
+<div class="ver_quejas">
+	<div class="contenedor-quejas col-xs-12 col-md-12">
+		<div class="datos-personales col-xs-12 col-md-6">
+			<h1>Datos Personales</h1>
+			<div class="col-xs-5 datos-estaticos">
+				<ul>
+					<li><p>Nombre</p></li>
+					<li><p>Correo Electronico</p></li>
+					<li><p>Telefono</p></li>
+				</ul>
+			</div>
+			<div class="col-xs-5 datos-dinamicos">
+				<ul>
+					<li><p>{{cliente.Nombre}}</p></li>
+					<li><p>{{cliente.Correo}}</p></li>
+					<li><p>{{cliente.Telefono}}</p></li>
+				</ul>
+			</div>
+		</div>
+		<div class="datos-contacto col-xs-12 col-md-6" >
+			<h1>Datos  de la Queja</h1>
+			<div class="col-xs-5 datos-estaticos">
+				<ul>
+					<li><p>Tipo de Queja</p></li>
+					<li><p>Quejas</p></li>
+				</ul>
+			</div>
+			<div class="col-xs-5 datos-dinamicos">
+				<ul>
+					<li><p>{{cliente.Tipo_queja}}</p></li>
+					<li><p>{{cliente.Queja}}</p></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="contenedor-quejas2 col-xs-12 col-md-12">
+		<h1>Detalle de Solución de la queja</h1>
+		<div class="datos-personales col-xs-12 col-md-6">
+			<div class="col-xs-5 datos-estaticos">
+				<ul>
+					<li><p>Solución</p></li>
+				</ul>
+			</div>
+			<div class="col-xs-5 datos-dinamicos">
+				<ul>
+					<li><p>{{cliente.solucion}}</p></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

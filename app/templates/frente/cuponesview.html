@@ -1,0 +1,123 @@
+{% extends 'adminfrente.html' %}
+{% block content %}
+	<div class="cupones-all col-xs-12">
+		<div class="table-responsive">
+			<h1>Cupones Activos </h1>
+			<table class="table table-bordered table-hover table-striped tablesorter">
+				<thead>
+					<tr>
+						<th>
+							Cupón      <i class="fa fa-sort">
+						</th>
+						<th>
+							Agente de PR      <i class="fa fa-sort">
+						</th>
+						<th>
+							Campaña      <i class="fa fa-sort">
+						</th>
+						<th>
+							Cupones Totales      <i class="fa fa-sort">
+						</th>
+						<th>
+							Cupones Utilizados      <i class="fa fa-sort">
+						</th>
+						<th>
+							Tipo de Membresia      <i class="fa fa-sort">
+						</th>
+						<th>
+							Dirección web de la campaña
+						</th>
+						<th>
+							Fecha de Vencimiento
+						</th>
+						<th>
+							Editar
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for cuponact in cuponactivo %}
+						<tr>
+							<td><p>{{cuponact.cupon}}</p></td>
+							<td><p>
+								{% if cuponact.usuariogen != None %}
+									{{cuponact.usuariogen}}
+								{% else %}
+									Cupón Relacionado a una Campaña
+								{% endif %}
+							</p></td>
+							<td><p> 
+								{% if cuponact.campania != None %}
+									{{cuponact.campania}}
+								{% else %}
+									Cupó relacionado a un PR
+								{% endif %}
+							</p></td>
+							<td><p>{{cuponact.cantidad}}</p></td>
+							<td><p>{{cuponact.cuponusado}}</p></td>
+							<td><p>{{cuponact.membresia}}</p></td>
+							<td><p>http://suscripciones.frente.com.mx/promocion/{{cuponact.cupon}}</p></td>
+							<td><p>{{cuponact.fechafinal|date:"D d M Y"}}</p></td>
+							<th>
+								<p><a href="{% url 'cupones_edit' cuponact.id %}" class=" editar-clientes btn btn-default">Editar</a></p>
+							</th>
+						</tr>
+					{% endfor%}
+				</tbody>
+			</table>	
+		</div>
+		<div class="table-responsive">
+			<h1>Cupones Inactivos </h1>
+			<table class="table table-bordered table-hover table-striped tablesorter">
+				<thead>
+					<tr>
+						<th>
+							Cupón      <i class="fa fa-sort">
+						</th>
+						<th>
+							Agente de PR      <i class="fa fa-sort">
+						</th>
+						<th>
+							Campaña      <i class="fa fa-sort">
+						</th>
+						<th>
+							Cupones Totales      <i class="fa fa-sort">
+						</th>
+						<th>
+							Cupones Utilizados      <i class="fa fa-sort">
+						</th>
+						<th>
+							Tipo de Membresia      <i class="fa fa-sort">
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for cuponaina in cuponinactivo %}
+						<tr>
+							<td><p>{{cuponaina.cupon}}</p></td>
+							<td><p>{{cuponaina.usuariogen}}</p></td>
+							<td><p>
+								{% if cuponact.usuariogen != None %}
+									{{cuponact.usuariogen}}
+								{% else %}
+									Cupón Relacionado a una Campaña
+								{% endif %}
+							</p></td>
+							<td><p> 
+								{% if cuponact.campania != None %}
+									{{cuponact.campania}}
+								{% else %}
+									Cupó relacionado a un PR
+								{% endif %}
+								</p>
+								s</td>
+							<td><p>{{cuponact.cantidad}}</p></td>
+							<td><p>{{cuponact.cuponusado}}</p></td>
+							<td><p>{{cuponact.membresia}}</p></td>
+						</tr>
+					{% endfor%}
+				</tbody>
+			</table>	
+		</div>
+	</div>
+{% endblock %}

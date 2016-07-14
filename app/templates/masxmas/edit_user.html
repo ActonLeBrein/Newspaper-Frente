@@ -1,0 +1,28 @@
+{% extends 'masxmas/admin.html' %}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}{% block content %}
+	<div class="clientes-masxmas-update col-xs-12 co12-md-12">
+		<form action="" method="POST" class="form suscripciones">
+			<h1>{{texto}} {{cliente.nombre}}</h1>
+			<ul class = "col-xs-12 co12-md-12">
+				<!-- <li class = "col-xs-5 co12-md-6">
+					<p>El cliente radica en la delegación: {{cliente.delegacion}}</p>
+				</li>
+				<li class = "col-xs-5 co12-md-6">
+					<p>La colonia en la cual se ubica es: {{cliente.Colonia}}</p>
+				</li> -->
+			</ul>
+			{% csrf_token %}
+			{% bootstrap_form form %}
+			{% buttons %}
+			<input type="submit" value="Registrar" class=" registrarfrente btn btn-default"/> {{mensaje}}
+			{% endbuttons %}
+		</form>
+	</div>
+{% endblock %}

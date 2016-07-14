@@ -1,0 +1,50 @@
+{% extends 'masxmas/admin.html' %}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}{% block content %}
+	<div class="clientes-frente-update">
+		<form action="" method="POST" class="form suscripciones">
+			<div class="titulos">
+				<h1>{{texto}}</h1>
+			</div>
+			{% csrf_token %}
+			{% bootstrap_form form %}
+			{% buttons %}
+			<input type="submit" value="Registrar" class=" btn btn-default"/> {{mensaje}}
+			{% endbuttons %}
+		</form>
+	</div>
+{% endblock %}
+{%	block js%}
+<script>
+	$('#id_delegacion').on('change', inicio);
+	function inicio(){
+		var id = $(this).val();
+		$.ajax({
+			data : {'id':id},
+			url: '/delegacion_ajax/',
+			type: 'get',
+			success: function(data){
+				var $el = $('#id_Colonia').empty();
+				$.each(data, function(i,nombre){
+					$el.append($("<option></option>").attr("value", nombre['pk']).text(nombre['fields']['descripcion_Colonia']));
+				});
+			}
+		});
+	}
+	$(function () {
+		$("#id_cumpleanos").datepicker({
+			dateFormat: 'dd/mm/yy',
+			yearRange: "1920:2014",
+			dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mi&eacute;', 'Jue', 'Vie', 'S&aacute;b'],
+			changeMonth: true,
+			changeYear: true,
+		});
+	});
+</script>
+{% endblock %}

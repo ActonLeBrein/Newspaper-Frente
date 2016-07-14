@@ -1,0 +1,86 @@
+{% extends 'adminfrente.html' %}
+{% block content %}
+<div class="general-cliente">
+	<ul class = "cliente">
+		<div class="table-responsive">
+			<table class="table table-bordered table-hover table-striped tablesorter">
+				<thead>
+					<tr>
+						<th>Nombre Completo          <i class="fa fa-sort"></i></th>
+						<th>Cupón          <i class="fa fa-sort"></i></th>
+						<th>Fecha de Vencimiento          <i class="fa fa-sort"></i></th>
+						<th>Ver Más          <i class="fa fa-sort"></i></th>
+						<th>Editar          <i class="fa fa-sort"></i></th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for cliente in cli.object_list %}
+						{{fecha}}
+						<tr>
+							<th>
+								<p>
+									{% if cliente.apellido_Paterno == 'NONAME' %}
+									{% else %}
+										{{cliente.apellido_Paterno}}
+									{% endif %}
+									{% if cliente.apellido_Materno == 'NONAME' %}
+									{% else %}
+										{{cliente.apellido_Materno}}
+									{% endif %}
+									{% if cliente.nombre == 'NONAME' %}
+									{% else %}
+										{{cliente.nombre}}
+									{% endif %}
+									</p>
+										
+							</th>
+							<th>
+								{% if cliente.cupon == 'NOCP' %}
+									<p>N/A</p>
+								{% else %}
+									<p>{{cliente.cupon}}</p>
+								{% endif %}
+							</th>
+							<th>
+								<p>{{cliente.fvencimiento}}</p>
+							</th>
+							<th>
+								<p><a href="{% url 'clientefrente_view' cliente.id %}" class=" editar-clientes btn btn-default">Ver Más</a></p>
+							</th>
+							<th>
+								<p><a href="{% url 'clientefrente_edit' cliente.id %}" class=" editar-clientes btn btn-default">Editar</a></p>
+							</th>
+						</tr>
+					{% endfor%}
+				</tbody>
+			</table>
+			{% load i18n %}
+			<div class="paginas">
+				<ul class="pagination">
+				    {% if cli.has_previous %}
+				        <li class="previous"><a href="?{{ cli.previous_page_number.querystring }}" >&lsaquo;&lsaquo; {% trans "Anterior" %}</a></li>
+				    {% else %}
+				        <li  class="disabled prev" ><span>&lsaquo;&lsaquo; {% trans "Anterior" %}</span></li>
+				    {% endif %}
+				    {% for page in cli.pages %}
+				        {% if page %}
+				            {% ifequal page cli.number %}
+				                <li class="now current page"><span>{{ page }}</span></li>
+				            {% else %}
+				                <li class="page"><a href="?{{ page.querystring }}" >{{ page }}</a></li>
+				            {% endifequal %}
+				        {% else %}
+				            <li class="unknown page"><span>...</span></li>
+				        {% endif %}
+				    {% endfor %}
+				    {% if cli.has_next %}
+				        <li class="next"><a href="?{{ cli.next_page_number.querystring }}" >{% trans "Siguiente" %} &rsaquo;&rsaquo;</a></li>
+				    {% else %}
+				        <li><span class="disabled next">{% trans "Siguiente" %} &rsaquo;&rsaquo;</span></li>
+				    {% endif %}
+				</ul>
+			</div>
+		</div>
+	</ul>
+</div>
+{% endblock %}

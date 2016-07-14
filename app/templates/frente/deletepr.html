@@ -1,0 +1,10 @@
+{% extends 'adminfrente.html' %}
+{% block content %}
+<div class="cupones-form">
+	<form method="post">{% csrf_token %}
+		Estas Seguro de Desactivar este usuario "{{ object }}" ?
+		<input type="submit" value="Submit" class="eliminarpr btn btn-danger"/>
+		<a href="{% url 'url_frenteusuarios'%}">Cancelar</a>
+	</form>
+</div>
+{% endblock %}

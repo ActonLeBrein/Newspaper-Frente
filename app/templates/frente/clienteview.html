@@ -1,0 +1,102 @@
+{% extends 'adminfrente.html' %}
+{% block content %}
+	<div class="cliente-view">
+		<div class="row">
+			<div class="contenedor-cleintes col-xs-12 col-md-12">
+				<div class="datos-personales col-xs-12 col-md-6">
+					<h1>Datos Personales</h1>
+					<div class="col-xs-5 datos-estaticos">
+						<ul>
+							<li><p>Nombre</p></li>
+							<li><p>Apellido Paterno</p></li>
+							<li><p>Apellido Materno</p></li>
+							<li><p>Cumpleaños</p></li>
+							<li><p>Correo Electronico</p></li>
+						</ul>
+					</div>
+					<div class="col-xs-5 datos-dinamicos">
+						<ul>
+							<li><p>{{cliente.nombre}}</p></li>
+							<li><p>{{cliente.apellido_Paterno}}</p></li>
+							<li><p>{{cliente.apellido_Materno}}</p></li>
+							<li><p>{{cliente.cumpleanos}}</p></li>
+							<li><p>{{cliente.mail}}</p></li>
+						</ul>
+					</div>
+				</div>
+				<div class="datos-contacto col-xs-12 col-md-6" >
+					<h1>Datos Contacto</h1>
+					<div class="col-xs-5 datos-estaticos">
+						<ul>
+							<li><p>Calle</p></li>
+							<li><p>Número Exterior</p></li>
+							<li><p>Número Interior</p></li>
+							<li><p>Colonia</p></li>
+							<li><p>Delegación</p></li>
+							<li><p>Código Postal</p></li>
+							<li><p>Tipo de Entrega</p></li>
+						</ul>
+					</div>
+					<div class="col-xs-5 datos-dinamicos">
+						<ul>
+							<li><p>{{cliente.calle}}</p></li>
+							<li><p>{{cliente.numero_Exterior}}</p></li>
+							<li>
+								{% if cliente.numero_Interior == ''   %}
+									<p>Sin Número Interior</p>
+								{% else %}
+									<p>{{cliente.numero_Interior}}</p>
+								{% endif %}
+							</li>
+							<li><p>{{cliente.Colonia}}</p></li>
+							<li><p>{{cliente.delegacion}}</p></li>
+							<li><p>{{cliente.cp}}</p></li>
+							<li><p>{{cliente.entregas}}</p></li>
+						</ul>
+					</div>
+				</div>
+				<div class="datos-registro col-xs-12 col-md-6">
+					<h1>Datos Registro</h1>
+					<div class="col-xs-5 datos-estaticos">
+						<ul>
+							<li><p>Cupón</p></li>
+							<li><p>Campaña</p></li>
+							<li><p>Usuario PR</p></li>
+							<li><p>Fecha de registro</p></li>
+							<li><p>Fecha  de Vencimiento</p></li>
+						</ul>
+					</div>
+					<div class="col-xs-5 datos-dinamicos">
+						<ul>
+							<li>
+								<p>{{cliente.cupon}}</p>
+							</li>
+							<li>
+								{% if pr.campania != None %}
+									<p>{{pr.campania}}</p>
+								{% else %}
+									<p>Pertenece a un PR</p>
+								{% endif %}
+							</li>
+							<li>
+								{% if pr.usuariogen != None %}
+									<p>{{pr.usuariogen}}</p>
+								{% else %}
+									<p>Cupón de campaña</p>
+								{% endif %}
+							</li>
+							<li>
+								<p>{{cliente.created|date:"D d M Y"}}</p>
+							</li>
+							{% if fecha == True  %}
+								<li class="danger" ><p>{{cliente.fvencimiento|date:"D d M Y"}}</p></li>
+							{% else %}
+								<li><p>{{cliente.fvencimiento|date:"D d M Y"}}</p></li>	
+							{% endif %}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

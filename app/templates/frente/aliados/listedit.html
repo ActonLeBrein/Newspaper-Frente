@@ -1,0 +1,30 @@
+{% extends 'adminfrente.html' %}
+{% block content %}
+<div class="general-cupon">
+	<ul class = "cupon">
+		<div class="table-responsive">
+			<table class="table table-bordered table-hover table-striped tablesorter">
+				<thead>
+					<tr>
+						<th>Nombre de la Camapaña          <i class="fa fa-sort"></i></th>
+						<th>Editar          <i class="fa fa-sort"></i></th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for aliados in object_list %}
+						<tr>
+							<th>
+								<p>{{aliados.descripcion}}</p>
+							</th>
+							</th>
+							<th>
+								<p><a href="{% url 'aliados_edit' aliados.id %}" class=" editar-clientes btn btn-default">Editar</a></p>
+							</th>
+						</tr>
+					{% endfor%}
+				</tbody>
+			</table>
+		</div>
+	</ul>
+</div>
+{% endblock %}

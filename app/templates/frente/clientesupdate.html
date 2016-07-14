@@ -1,0 +1,58 @@
+{% extends 'adminfrente.html' %}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+{% block content %}
+	<div class="clientes-frente-update">
+		<div class="updatecliente col-xs-12">
+			<h1>Datos del Cliente </h1>
+			<table class="table table-bordered table-hover table-striped tablesorter">
+				<thead>
+					<tr>
+						<th>
+							Nombre
+						</th>
+						<th>
+							Apellido Paterno
+						</th>
+						<th>
+							Apellido Materno
+						</th>
+						<th>
+							Cupón
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="warning">
+						<th>
+							{{usarios.nombre}}
+						</th>
+						<th>
+							{{usarios.apellido_Materno}}
+						</th>
+						<th>
+							{{usarios.apellido_Paterno}}
+						</th>
+						<th>
+							{{usarios.cupon}}
+						</th>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<form action="" method="POST" class="form suscripciones">
+			<h1>Agregar un Nuevo Cupón</h1>
+			{% csrf_token %}
+			{% bootstrap_form form %}
+			{% buttons %}
+			<input type="submit" value="Registrar" class=" registrarfrente btn btn-default"/> {{mensaje}}
+			{% endbuttons %}
+		</form>
+	</div>
+{% endblock %}

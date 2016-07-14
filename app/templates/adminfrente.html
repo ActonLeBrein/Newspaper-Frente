@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="utf-8">
+<head>
+  <meta lang= "utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/estilo.css">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="/static/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/app.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <a href="{%url 'clientefrente_list' %}">
+        <div class="images" href="#"></div>
+        <h1 href="#" >Administrador</h1>
+      </a>
+      <div class="headeright">
+        <div class="dropdown">
+          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+            {% if user.is_active %}{{ user.first_name }} {% endif %} 
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="{% url 'contrasena' 1%}"><i class="fa fa-cog"> </i>  Cambiar Contraseña</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="{% url 'url_logout' %}"><i class="fa fa-sign-out"></i>  Cerrar Sesión</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="menu">
+      <ul class = "lista-menu">
+        <div class="dropdown">
+          <a href = "{%url 'clientefrente_list' %}">
+            <li class = "menu_option" ><i class="fa fa-align-left"></i>Clientes</a></li>
+        </div>
+        <div class="dropdown">
+          <li class = "menu_option" id="dropdownMenu1" data-toggle="dropdown"><i class="fa fa-comments"></i> <p>PR</p><span class="fa fa-caret-down"></span></li>
+          <ul class="dropdown-menu dropdown-bajo" role="menu" aria-labelledby="dropdownMenu1">
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="{%url 'url_frenteusuarios'%}"><i class="fa fa-eye"></i> Ver PR </a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="{%url 'url_registro'%}"><i class="fa fa-plus-square"></i> Añadir PR </a></li>
+          </ul>
+        </div>
+        <div class="dropdown">
+          <li class = "menu_option" id="dropdownMenu2" data-toggle="dropdown"><i class="fa fa-ticket"></i> <p>Cupones</p><span class="fa fa-caret-down"></span></li>
+          <ul class="dropdown-menu dropdown-bajo" role="menu" aria-labelledby="dropdownMenu2">
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="{%url 'url_vercupones'%}"><i class="fa fa-eye"></i> Ver Cupones </a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="{%url 'url_registrocupon'%}"><i class="fa fa-plus-square"></i> Creas Cupón </a></li>
+          </ul>
+        </div>
+        <div class="dropdown">
+          <li class = "menu_option" id="dropdownMenu3" data-toggle="dropdown"><i class="fa fa-share-alt-square"></i> <p>Aliados</p><span class="fa fa-caret-down"></span></li>
+          <ul class="dropdown-menu dropdown-bajo" role="menu" aria-labelledby="dropdownMenu3">
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="{%url 'aliados_list'%}"><i class="fa fa-eye"></i> Ver Aliados </a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="{%url 'aliados_create_new'%}"><i class="fa fa-plus-square"></i> Crear Aliado </a></li>
+          </ul>
+        </div>
+        <div class="dropdown">
+          <li class = "menu_option" id="dropdownMenu4" data-toggle="dropdown"><i class="fa fa-thumbs-up"></i> <p>Campañas</p><span class="fa fa-caret-down"></span></li>
+          <ul class="dropdown-menu dropdown-bajo" role="menu" aria-labelledby="dropdownMenu4">
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="{%url 'campania_list' %}"><i class="fa fa-eye"></i> Ver Campañas </a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="{%url 'campania_create_new' %}"><i class="fa fa-plus-square"></i> Crear Campaña </a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="{%url 'campanialist_frente' %}"><i class="fa fa-eye"></i>Campañas Activas</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="{%url 'campanialistFalse_frente' %}"><i class="fa fa-eye"></i>Camapañas Inactivas</a></li>
+          </ul>
+        </div>
+        <div class="dropdown">
+          <li class = "menu_option" id="dropdownMenu5" data-toggle="dropdown"><i class="fa fa-envelope"></i> <p>Quejas</p><span class="fa fa-caret-down"></span></li>
+          <ul class="dropdown-menu dropdown-bajo" role="menu" aria-labelledby="dropdownMenu5">
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="{%url 'consulta_quejas' 1%}"><i class="fa fa-eye"></i> Ver queja </a></li>
+          </ul>
+        </div>
+      </ul>
+    </div>
+    <div class="contenido">
+      {% block content %}
+      {% endblock %}
+    </div>
+  </div>
+</body>
+</html>
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Administrador
+    </title>
+
+
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+
+    <link href="/static/css/sb-admin.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/stylesheets/base.css">
+
+    <link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
+  </head>
+
+  <body>
+
+    <div id="wrapper">
+
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+ 
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{%url 'clientefrente_list' %}">Frente Administrador</a>
+        </div>
+
+
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav side-nav">
+            <li class="active"><a href="{% url 'clientefrente_list'%}"><i class="fa fa-edit"></i> Clientes</a></li>
+            <li class="dropdown">
+              <a href="{%url 'url_frenteusuarios'%}" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> PR <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="{%url 'url_frenteusuarios'%}">Ver PR</a></li>
+                <li><a href="{%url 'url_registro'%}">Crear PR</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Cupones <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="{%url 'url_vercupones'%}">Ver Cupones</a></li>
+                <li><a href="{%url 'url_registrocupon'%}">Crear Cupón</a></li>
+                <li><a href="{%url 'cupones_lista'%}">Editar Cupón</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Aliados <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="{%url 'aliados_list'%}">Ver Aliados</a></li>
+                <li><a href="{%url 'aliados_create_new'%}">Crear Aliado</a></li>
+                <li><a href="{%url 'aliados_listedit'%}">Editar Aliado</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Camapaña <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="{%url 'campania_list' %}">Ver Campañas</a></li>
+                <li><a href="{%url 'campania_create_new' %}">Crear Campaña</a></li>
+                <li><a href="{%url 'campania_listedit' %}">Editar Campaña</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Quejas <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="{%url 'consulta_quejas' 1%}">Ver Quejas</a></li>
+              </ul>
+            </li>
+            <li><a href="{%url 'clientefrente_create_new'%}"><i class="fa fa-edit"></i> Ejemplo de suscripcion</a></li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right navbar-user">
+            <li class="dropdown user-dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {% if user.is_active %}{{ user.first_name }} {% endif %} <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="{% url 'contrasena' 1%}"><i class="fa fa-asterisk"></i> Cambiar Contraseña</a></li>
+                <li><a href="{% url 'url_logout' %}"><i class="fa fa-power-off"></i> Log Out</a></li>
+              </ul>
+            </li>
+          </ul>
+
+      </nav>
+
+      <div id="page-wrapper">
+
+      </div>
+
+    </div>
+
+
+    <script src="/static/js/jquery-1.10.2.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+
+ 
+    <script src="/static/http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="/static/http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
+    <script src="/static/js/morris/chart-data-morris.js"></script>
+    <script src="/static/js/tablesorter/jquery.tablesorter.js"></script>
+    <script src="/static/js/tablesorter/tables.js"></script>
+
+  </body>
+</html>
+ -->

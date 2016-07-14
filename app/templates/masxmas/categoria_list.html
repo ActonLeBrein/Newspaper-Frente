@@ -1,0 +1,44 @@
+{% extends 'masxmas/admin.html' %}
+{% block content%}
+	<div class="clientes_masxmas">
+		<div class="table-responsive">
+			<div class="titulos">
+				<h1>Categoría</h1>
+			</div>
+			<table class="table table-bordered table-hover table-striped tablesorter">
+				<thead>
+					<tr>
+						<th>Nombre </th>
+						<th>Editar</th>
+						<th>ver Clientes</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						{% for c in cate %}
+						<tr>
+							<th>
+								<p>{{ c.descripcion_Categoria}}</p>
+							</th>
+							<th>
+								<p>
+									<a href="{% url 'categoria_edit' c.id %}" class=" editar-aliados btn btn-default">
+										Editar
+									</a>
+								</p>
+							</th>
+							<th>
+								<p>
+									<a href="{% url 'categoria_filter' c.id %}" class=" editar-aliados btn btn-default">
+										Ver Más
+									</a>
+								</p>
+							</th>
+						</tr>
+					{% endfor%}
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% endblock%}

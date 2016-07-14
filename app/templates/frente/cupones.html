@@ -1,0 +1,16 @@
+{% extends 'adminfrente.html' %}
+{% block content %}
+{% load bootstrap3 %}
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+<div class="cupones-form">
+	<form action="" method="POST" class="form">
+		{% csrf_token %}
+		{% bootstrap_form form %}
+		{% buttons %}
+		<input type="submit" value="Registrar" class="btn btn-success"/> {{mensaje}}
+		<a href="/frente" class="btn btn-danger " role="button">Cancelar</a>
+		{% endbuttons %}
+	</form>
+</div>
+{% endblock %}

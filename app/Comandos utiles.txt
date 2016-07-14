@@ -1,0 +1,17 @@
+PGPASSWORD=123 pg_dump -Fc --no-acl --no-owner -h localhost -U data4 frente > frente.dump
+
+pg_restore --verbose --clean --no-acl --no-owner -h localhost -U data4 -d frente frente.dump
+Para los statics 
+python manage.py collectstatic
+
+COPY app_colonia_frente FROM '/home/alejandro/Documentos/Benito.csv' WITH DELIMITER ',' CSV HEADER;
+
+ pip install python-dateutil
+ Ajax
+ pip install django_dajax
+
+ Modificamos el models.py de nuestra aplicación
+Crear un nuevo script de migración
+python manage.py schemamigration app --auto
+Aplicar la migración a la bd
+python manage.py migrate app

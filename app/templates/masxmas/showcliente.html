@@ -1,0 +1,152 @@
+{% extends 'masxmas/admin.html' %}
+{% block content %}
+	<div class="cliente-view">
+		<div class="row">
+			<div class="contenedor-cleintes col-xs-12 col-md-12">
+				<div class="datos-personales col-xs-12 col-md-6">
+					<h1>Datos Personales</h1>
+					<div class="col-xs-5 datos-estaticos">
+						<ul>
+							<li><p>Nombre</p></li>
+							<li><p>Apellido Paterno</p></li>
+							<li><p>Apellido Materno</p></li>
+							<li><p>Correo Electrónico</p></li>
+							<li><p>Télefono</p></li>
+						</ul>
+					</div>
+					<div class="col-xs-5 datos-dinamicos">
+						<ul>
+							<li>
+								<p>
+									{% if cliente.nombre = 'NONAME' %}
+									{% else %}
+										{{cliente.nombre}}
+									{% endif %}
+								</p>
+							</li>
+							<li>
+								<p>
+									{% if cliente.apellido_Paterno = 'NONAME' %}
+									{% else %}
+										{{cliente.apellido_Paterno}}
+									{% endif %}
+								</p>
+							</li>
+							<li>
+								<p>
+									{% if cliente.apellido_Materno = 'NONAME' %}
+									{% else %}
+										{{cliente.apellido_Materno}}
+									{% endif %}
+								</p>
+							</li>
+							<li><p>
+								{% if cliente.mail = 'SIN_MAIL' %}
+								{% elif cliente.mail = ''%}
+								{% else %}
+									{{cliente.mail}}
+								{% endif %}</p></li>
+							<li>
+								<p>{% if cliente.telefono = 1111 %}
+									{% elif cliente.telefono = '' %}
+									{% else %}
+										{{cliente.telefono}}
+									{% endif %}
+								</p>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="datos-contacto col-xs-12 col-md-6" >
+					<h1>Datos Contacto</h1>
+					<div class="col-xs-5 datos-estaticos">
+						<ul>
+							<li><p>Calle</p></li>
+							<li><p>Número Exterior</p></li>
+							<li><p>Número Interior</p></li>
+							<li><p>Colonia</p></li>
+							<li><p>Delegación</p></li>
+							<li><p>Código Postal</p></li>
+							<li><p>Tipo de Entrega</p></li>
+						</ul>
+					</div>
+					<div class="col-xs-5 datos-dinamicos">
+						<ul>
+							<li><p>{{cliente.calle}}</p></li>
+							<li><p>{{cliente.numero_Exterior}}</p></li>
+							<li>
+								{% if cliente.numero_Interior == ''   %}
+								{% else %}
+									<p>{{cliente.numero_Interior}}</p>
+								{% endif %}
+							</li>
+							<li><p>{{cliente.Colonia}}</p></li>
+							<li><p>{{cliente.delegacion}}</p></li>
+							<li><p>{{cliente.cp}}</p></li>
+							<li><p>{{cliente.entregas}}</p></li>
+						</ul>
+					</div>
+				</div>
+				<div class="datos-registro col-xs-12 col-md-6">
+					<h1>Datos Registro</h1>
+					<div class="col-xs-5 datos-estaticos">
+						<ul>
+							<li><p>Dotación</p></li>
+							<li>
+								<p>Empresa</p>
+							</li>
+							<li><p>Distribución</p></li>
+							<li><p>Categoría</p></li>
+							<li><p>Sub-categoría 1</p></li>
+							<li><p>Sub-categoría 2</p></li>
+							<li>
+								<p>Sub-categoría 3</p>
+							</li>
+							<li>
+								<p>Número Ruta</p>
+							</li>
+							<li>
+								<p>Ruta </p>
+							</li>
+						</ul>
+					</div>
+					<div class="col-xs-5 datos-dinamicos">
+						<ul>
+							<li>
+								<p>{{cliente.dotacion}}</p>
+							</li>
+							<li>
+								<p>{{cliente.empresa}}</p>
+							</li>
+							<li>
+								<p>{{cliente.distribucion}}</p>
+							</li>
+							<li>
+								<p>{{cliente.categoria}}</p>
+							</li>
+							<li>
+								<p>{{cliente.subcategoria1}}</p>
+							</li>
+							<li>
+								<p>{{cliente.subcategoria2}}</p>
+							</li>
+							<li>
+								<p>{{cliente.subcategoria3}}</p>
+							</li>
+							<li>
+								<p># {{cliente.rutas.numero_Ruta}}</p>
+							</li>
+							<li>
+								<p>{{cliente.rutas}}</p>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-xs-5 datos-dinamicos">
+						<h1>Editar Cliente</h1>
+						<p><a href="{% url 'edit_clientesmasxmas' cliente.id %}" class=" editar-aliados btn btn-default">Editar</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

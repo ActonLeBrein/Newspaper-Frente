@@ -1,0 +1,371 @@
+.edit-user li {
+	color: 000px;
+	display: inline-block;
+	list-style: none;
+	min-height: 35px;
+	width: 30%;
+}
+a{
+	text-decoration: none;
+	color: 000;
+}
+.formularios{
+	margin-left: 50px;
+	min-height: 50px;
+	width: 90%;
+}
+/*Login*/
+.login{
+	background: #FFB300;
+	border-radius: 20px;
+	height: 430px;
+	margin: 0 auto;
+	width: 600px;
+}
+.login .logo{
+	text-align: center;
+}
+.login .logo img{
+	margin: 20px;
+}
+.login .btn-login{
+	background: #000;
+	border-color: #000;
+	color: #fff;
+	float: right;
+	font-size: 16px;
+}
+.login .btn-login:hover{
+	background: #000;
+	border-color: #000;
+	color: #fff;
+	float: right;
+	font-size: 16px;
+}
+.login h1{
+	margin: 0 auto;
+	margin-bottom: 20px;
+	width: 60%;
+}
+.login .formulario-login{
+	margin: 0 auto;
+	width: 60%
+}
+/* Registro de usuarios*/
+.register-form{
+	margin: auto;
+	position: relative;
+	top: 40px;
+	width: 60%;
+}
+/* Cupones */
+.cupones-form{
+	margin: auto;
+	position: relative;
+	top: 40px;
+	width: 60%;
+}
+
+/* registro frente */
+.clientes-frente-resgistro{
+	border-right: 1px dotted #000;
+	display: inline-block;
+	margin: auto;
+	position: relative;
+	top: 40px;
+	vertical-align: top;
+	width: 69%
+}
+ .clientes-frente-resgistro .control-label{
+ 	display: inline;
+}
+.clientes-frente-resgistro .form-group{
+	display: inline-block;
+	margin-right: 5%;
+	width: 100%;
+}
+.clientes-frente-resgistro .form-control{
+	display: inline-block;
+	float: right;
+	margin-right: 30px;
+	vertical-align: top;
+	width: 70%;
+}
+.clientes-frente-resgistro .suscripciones{
+	margin-top: 25px;
+}
+.suscripciones .mensajecupon{
+	background: #FFCC33;
+	color: #fff;
+	font-size: 16px;
+	line-height: 35px;
+	margin: auto;
+	margin-bottom: 35px;
+	min-height: 33px;
+	text-align: center;
+	width: 70%;
+}
+.suscripciones #id_entregas .radio{
+	display: inline-block;
+}
+.formulario .ima{
+	margin-top: 25px;
+	text-align: center;
+}
+.info{
+	display: inline-block;
+	height: 500px;
+	width: 30%;
+}
+.form-group .registrarfrente{
+	background: #FFB300;
+	color: #fff;
+	font-size: 20px;
+	margin-left: 40%;
+	width: 150px;
+}
+.form-group .registrarfrente:hover{
+	background: #FFB300;
+	color: #fff;
+	font-size: 20px;
+	margin-left: 40%;
+	width: 150px;
+}
+.clientes-frente-resgistro .datos{
+	border-bottom: 1px dotted #000;
+	margin-bottom: 45px;
+}
+.datos .form-user{
+	color: #FFCC33;
+	display: inline-block;
+	font-size: 20px;
+	margin-top: 8px;
+	margin-right: 12px;
+	vertical-align: top;
+}
+.datos h6{
+	display: inline-block;
+	font-size: 20px;
+	vertical-align: top;
+}
+.general-user li{
+	min-height: 50px;
+	list-style: none;
+}
+.general-user li a{
+	font-size: 18px;
+	color: #000;
+}
+.general-user .registrarfrente{
+	background: #FFCC33;
+	color: #fff;
+	font-size: 20px;
+	float: right;
+	margin-right: 50%;
+	width: 150px;
+}
+
+.info .texto_superior{
+	padding-top: 105px;
+	padding-left: 10px;
+}
+/* Clientes*/
+.general-cliente li{
+	min-height: 50px;
+	list-style: none;
+}
+.general-cliente li a, .general-cliente li p{
+	color: #000;
+	display: inline-block;
+	font-size: 18px;
+}
+.general-cliente .editar-clientes{
+	background: #FFCC33;
+	color: #fff;
+	font-size: 14px;
+}
+.general-cliente .cliente{
+	padding: 0px;
+}
+.cliente p{
+	display: inline-block;
+	line-height: 30px;
+	margin: 0px;
+	padding: 0px;
+} 
+.general-user .editarpr{
+	background: #FFCC33;
+	color: #fff;
+	font-size: 14px;
+	width: 80px;
+}
+
+.general-user .eliminarpr{
+	width: 90px;
+}
+#id_membresia .radio{
+	display: inline-block;
+
+}
+.cupones-form #id_fechafinal{
+	display: none;
+}
+.cupones-form label[for=id_fechafinal]{
+	display: none;
+}
+.clientes-frente-resgistro .control-label{
+	display: inline-block;
+}
+/*.clientes-frente-resgistro label[for=id_entregas_0]{
+    display: none;
+}*/
+.cupones-form .control-label{
+	display: inline-block !important;
+}
+.cupones-form label[for=id_membresia_0]{
+    display: none;
+}
+/*Vista Clientes*/
+.contenedor-cleintes ul{
+	margin-top: 15px;
+	padding: 0px;
+}
+.contenedor-cleintes li{
+	height: 35px;
+	list-style: none;
+}
+.contenedor-cleintes .datos-personales{
+	border-bottom: 2px solid #FFB300;
+	height: 341px;
+}
+.contenedor-cleintes .datos-contacto{
+	border-bottom: 2px solid #FFB300;
+	height: 341px;
+}
+.contenedor-cleintes h1{
+	color: #FFB300;
+}
+.contenedor-cleintes .datos-dinamicos li {
+/*	border-radius: 5px;
+	border: 1px solid #000;*/
+	height: 30px;
+	margin-bottom: 3px;
+}
+.contenedor-cleintes .datos-dinamicos p{
+	margin: 0px;
+	margin-left: 10px;
+	margin-top: 3px;
+}
+.contenedor-cleintes .datos-dinamicos{
+	padding: 0px;
+}
+.contenedor-cleintes .datos-estaticos p{
+	color: #000;
+	font-size: 16px
+}
+.contrasena{
+	margin: auto;
+}
+.contrasena .btn-default{
+	background: #FFB300;
+	color: #fff;
+	font-size: 16px;
+}
+.contrasena .btn-default:hover{
+	background: #FFB300;
+	color: #fff;
+	font-size: 16px;
+}
+.contrasena .mensajecontrasena{
+	background: #FFB300;
+	color: #fff;
+	font-size: 16px;
+	height: 50px;
+	margin: auto;
+	text-align: center;
+	width: 50%;
+}
+.contrasena .mensajecontrasena p{
+	line-height: 48px;
+	margin: 0px;
+	padding: 0px;
+}
+/*Cupones*/
+.cupones-all .editar-clientes{
+	background: #FFB300;
+	color: #fff;
+	font-size: 15px;
+}
+.cupones-all .editar-clientes:hover{
+	background: #FFB300;
+	color: #fff;
+	font-size: 15px;
+}
+/*Terminia cupones*/
+/*Campañas*/
+.campania-view .editar-campania{
+	background: #FFB300;
+	color: #fff;
+	font-size: 15px;
+}
+.campania-view .editar-campania:hover{
+	background: #FFB300;
+	color: #fff;
+	font-size: 15px;
+}
+/*Termina campania*/
+
+/*Quejas*/
+.ver_quejas{
+	background: #FFB300;
+	color: #fff;
+	font-size: 15px;
+}
+.contenedor-quejas ul{
+	margin-top: 15px;
+	padding: 0px;
+}
+.contenedor-quejas li{
+	list-style: none;
+}
+.contenedor-quejas{
+	border-bottom: 2px solid #FFB300;
+	padding-bottom: 30px;
+}
+.contenedor-quejas2{
+	border-bottom: 2px solid #FFB300;
+	padding-bottom: 30px;
+}
+.contenedor-quejas h1, .contenedor-quejas2 h1{
+	color: #FFB300;
+}
+.contenedor-quejas2 h1{
+	text-align: center;
+}
+.contenedor-quejas .datos-dinamicos li, .contenedor-quejas2 .datos-dinamicos li {
+/*	border-radius: 5px;
+	border: 1px solid #000;*/
+	min-height: 30px;
+	margin-bottom: 3px;
+}
+.contenedor-quejas .datos-dinamicos p, .contenedor-quejas2 .datos-dinamicos p{
+	color: #000;
+	margin: 0px;
+	margin-left: 10px;
+	margin-top: 3px;
+}
+.contenedor-quejas .datos-dinamicos, .contenedor-quejas2 .datos-dinamicos{
+	padding: 0px;
+}
+.contenedor-quejas .datos-estaticos p, .contenedor-quejas2 .datos-estaticos p{
+	color: #000;
+	font-size: 16px
+}
+.clientes-masxmas-update ul li{
+	border: 1px solid #000;
+	border-radius: 5px;
+	display: inline-block;
+	list-style: none;
+	margin-left: 1%;
+	text-align: center;
+}

@@ -1,0 +1,20 @@
+{% extends 'adminfrente.html' %}
+{% block content %}
+{% load bootstrap3 %}
+{% bootstrap_messages %}
+	<div class="contrasena">
+		<h1>Cambiar Contraseña</h1>
+		<form action="." method="POST" class="form form-contrasena">
+			{% csrf_token %}
+			{% bootstrap_form form %}
+			{% buttons %}
+			{% if mensaje != '' %}
+				<div class="mensajecontrasena">
+					<p>{{mensaje}}</p>
+				</div>
+			{% endif%}
+				<input type="submit" value="Nueva Contraseña" class="btn-login btn btn-default"/>
+			 {% endbuttons %}
+		</form>
+	</div>
+{% endblock %}

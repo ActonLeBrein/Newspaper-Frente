@@ -1,0 +1,36 @@
+{% extends 'adminfrente.html' %}
+{% block content %}
+<div class="general-user">
+	<div class="table-responsive">
+		<h1>Relaciones Publicas </h1>
+		<table class="table table-bordered table-hover table-striped tablesorter">
+			<thead>
+				<tr>
+					<th class = "col-xs-4">
+						Nombre      <i class="fa fa-sort">
+					</th>
+					<th class = "col-xs-4">
+						Apellidos      <i class="fa fa-sort">
+					</th>
+					<th class = "col-xs-4">
+						Correo Electronico      <i class="fa fa-sort">
+					</th>
+					<th class = "col-xs-4">
+						Editar      <i class="fa fa-sort">
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for usuario in usuarios %}
+					<tr>
+						<td><p>{{ usuario.first_name }}</p></td>
+						<td><p>{{ usuario.last_name }}</p></td>
+						<td><p>{{ usuario.email }}</p></td>
+						<th><a href="/frente/usuarios/edit/{{usuario.id}}" class=" editarpr btn btn-default">Editar</a></th>
+					</tr>
+				{% endfor%}
+			</tbody>
+		</table>	
+	</div>
+</div>
+{% endblock %}

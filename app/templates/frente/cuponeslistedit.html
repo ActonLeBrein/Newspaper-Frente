@@ -1,0 +1,35 @@
+{% extends 'adminfrente.html' %}
+{% block content %}
+<div class="general-cupon">
+	<ul class = "cupon">
+		<div class="table-responsive">
+			<table class="table table-bordered table-hover table-striped tablesorter">
+				<thead>
+					<tr>
+						<th>Cupón          <i class="fa fa-sort"></i></th>
+						<th>Cantidad          <i class="fa fa-sort"></i></th>
+						<th>Fecha de Vencimiento          <i class="fa fa-sort"></i></th>
+						<th>Editar          <i class="fa fa-sort"></i></th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for cupon in object_list %}
+						<tr>
+							<th>
+								<p>{{cupon.cupon}}</p>
+							</th>
+							<th><p>{{cupon.cantidad}}</p></th>
+							<th>
+								<p>{{cupon.fechafinal|date:"D d M Y"}}</p>
+							</th>
+							<th>
+								<p><a href="{% url 'cupones_edit' cupon.id %}" class=" editar-clientes btn btn-default">Editar</a></p>
+							</th>
+						</tr>
+					{% endfor%}
+				</tbody>
+			</table>
+		</div>
+	</ul>
+</div>
+{% endblock %}

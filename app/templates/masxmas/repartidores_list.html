@@ -1,0 +1,62 @@
+{% extends 'masxmas/admin.html' %}
+{% block content%}
+	<div class="clientes_masxmas">
+		<div class="table-responsive">
+			<div class="titulos">
+				<h1>Repartidores</h1>
+			</div>
+			<table class="table table-bordered table-hover table-striped tablesorter">
+				<thead>
+					<tr>
+						<th>Nombre </th>
+						<th>Ruta</th>
+						<th>Editar</th>
+						<th>Clientes del Repartidor</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						{% for c in repa.object_list %}
+						<tr>
+							<th>
+								<p>{{ c.nombre}} {{c.apellido_Paterno}}</p>
+							</th>
+							<th>
+									<p>{{c.rutas}}</p>
+							</th>
+							<th><p><a href="{% url 'repartidor_edit' c.id %}" class=" editar-aliados btn btn-default">Editar</a></p></th>
+							<th><p><a href="{% url 'repartidor_ver' c.rutas.id  %}" class = "editar-aliados btn btn-default">Ver</a></p></th>
+						</tr>
+					{% endfor%}
+					</tr>
+				</tbody>
+			</table>
+			{% load i18n %}
+			<div class="paginas">
+				<ul class="pagination">
+				    {% if repa.has_previous %}
+				        <li class="previous"><a href="?{{ repa.previous_page_number.querystring }}" >&lsaquo;&lsaquo; {% trans "Anterior" %}</a></li>
+				    {% else %}
+				        <li  class="disabled prev" ><span>&lsaquo;&lsaquo; {% trans "Anterior" %}</span></li>
+				    {% endif %}
+				    {% for page in repa.pages %}
+				        {% if page %}
+				            {% ifequal page repa.number %}
+				                <li class="now current page"><span>{{ page }}</span></li>
+				            {% else %}
+				                <li class="page"><a href="?{{ page.querystring }}" >{{ page }}</a></li>
+				            {% endifequal %}
+				        {% else %}
+				            <li class="unknown page"><span>...</span></li>
+				        {% endif %}
+				    {% endfor %}
+				    {% if repa.has_next %}
+				        <li class="next"><a href="?{{ repa.next_page_number.querystring }}" >{% trans "Siguiente" %} &rsaquo;&rsaquo;</a></li>
+				    {% else %}
+				        <li><span class="disabled next">{% trans "Siguiente" %} &rsaquo;&rsaquo;</span></li>
+				    {% endif %}
+				</ul>
+			</div>
+		</div>
+	</div>
+{% endblock%}

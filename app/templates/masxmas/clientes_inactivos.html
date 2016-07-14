@@ -1,0 +1,106 @@
+{% extends 'masxmas/admin.html' %}
+{% load bootstrap3 %}
+{% bootstrap_messages %}
+{% block content%}
+	<div class="clientes_masxmas">
+		<div class="listado_clientes titulos col-xs-12 col-md-12">
+			<div class="col-xs-6 col-md-6 ">
+				<h1>Listado de clientes Inactivos</h1>
+			</div>	
+			<div class="BuscadorClientes col-xs-6 col-md-6">
+			<form action="{%url 'searchCliente'%}" method="POST" class="form">
+				{% csrf_token %}
+				<input type="search" class="form-control" name ="SearchCliente" placeholder="Buscar por Nombre o Empresa">
+			</form>
+		</div>
+		</div>
+		<div class="table-responsive">
+			<table class="table table-bordered table-hover table-striped tablesorter">
+				<thead>
+					<tr>
+						<th>Apellidos</th>
+						<th>Nombre</th>
+						<th>Mail</th>
+						<th>Teléfono</th>
+						<th>Categoría</th>
+						<th>Ver</th>
+						<th>Editar</th>
+						<th>Crear Queja</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						{% for c in cliente.object_list %}
+							<tr>
+								<th><p>
+									{% if c.apellido_Paterno = 'NONAME' %}
+									{% else %}
+									{{c.apellido_Paterno}}
+									{% endif %}
+									{% if c.apellido_Materno = 'NONAME' %}
+									{% else %}
+										{{c.apellido_Materno}}
+									{% endif %}
+								</p></th>
+								<th>
+									<p>
+										{% if c.nombre = 'NONAME' %}
+										{% else %}
+											{{c.nombre}}</p>
+										{% endif %}
+								</th>
+								<th>
+									{% if c.mail = 'SIN_MAIL' %}
+										<p></p>
+									{% elif c.mail = ''%}
+										<p></p>
+									{% else %}
+										<p>{{c.mail}}</p></th>
+									{% endif %}
+								<th>
+									{% if c.telefono = 1111 %}
+										<p></p>
+									{% elif c.telefono = '' %}
+										<p></p>
+									{% else %}
+										<p>{{c.telefono}}</p>
+									{% endif %}
+								</th>
+								<th>{{c.categoria}}</th>
+								<th><p><a href="{% url 'ShowCliente' c.id %}" class=" editar-aliados btn btn-default">Ver Más</a></p></th>
+								<th><p><a href="{% url 'edit_clientesmasxmas' c.id %}" class=" editar-aliados btn btn-default">Editar</a></p></th>
+								<th><p><a href="{% url 'quejasControl' c.id %}" class=" editar-aliados btn btn-default">Crear Queja</a></p></th>
+							</tr>
+						{% endfor%}
+					</tr>
+				</tbody>
+			</table>
+			{% load i18n %}
+			<div class="paginas">
+				<ul class="pagination">
+				    {% if cliente.has_previous %}
+				        <li class="previous"><a href="?{{ cliente.previous_page_number.querystring }}" >&lsaquo;&lsaquo; {% trans "Anterior" %}</a></li>
+				    {% else %}
+				        <li  class="disabled prev" ><span>&lsaquo;&lsaquo; {% trans "Anterior" %}</span></li>
+				    {% endif %}
+				    {% for page in cliente.pages %}
+				        {% if page %}
+				            {% ifequal page cliente.number %}
+				                <li class="now current page"><span>{{ page }}</span></li>
+				            {% else %}
+				                <li class="page"><a href="?{{ page.querystring }}" >{{ page }}</a></li>
+				            {% endifequal %}
+				        {% else %}
+				            <li class="unknown page"><span>...</span></li>
+				        {% endif %}
+				    {% endfor %}
+				    {% if cliente.has_next %}
+				        <li class="next"><a href="?{{ cliente.next_page_number.querystring }}" >{% trans "Siguiente" %} &rsaquo;&rsaquo;</a></li>
+				    {% else %}
+				        <li><span class="disabled next">{% trans "Siguiente" %} &rsaquo;&rsaquo;</span></li>
+				    {% endif %}
+				</ul>
+			</div>
+		</div>
+	</div>
+{% endblock%}

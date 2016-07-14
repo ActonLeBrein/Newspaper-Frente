@@ -1,0 +1,60 @@
+{% extends 'masxmas/admin.html' %}
+{% block content%}
+	<div class="clientes_masxmas">
+		<div class="listado_clientes col-xs-6 col-md-6">
+		<h1>Listado de clientes</h1>
+		</div>
+		<!-- <div class="csv_clientes col-xs-6 col-md-6">
+			<p>Exportar todos los clientes</p>
+			<p><a href="{% url 'csv' %}" class=" editar-aliados btn btn-default">Exportar</a></p>
+		</div> -->
+		<div class="table-responsive">
+			<table class="table table-bordered table-hover table-striped tablesorter">
+				<thead>
+					<tr>
+						<th>Nombre </th>
+						<th>Editar</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						{% for c in cliente.object_list %}
+							<tr class="success">
+								<th>
+									<p>{{c.apellido_Paterno}} {{c.nombre}}</p>
+								</th>
+								<th><p><a href="{% url 'edit_clientesmasxmas' c.id %}" class=" editar-aliados btn btn-default">Editar</a></p></th>
+							</tr>
+						{% endfor%}
+					</tr>
+				</tbody>
+			</table>
+			{% load i18n %}
+			<div class="paginas">
+				<ul class="pagination">
+				    {% if cliente.has_previous %}
+				        <li class="previous"><a href="?{{ cliente.previous_page_number.querystring }}" >&lsaquo;&lsaquo; {% trans "Anterior" %}</a></li>
+				    {% else %}
+				        <li  class="disabled prev" ><span>&lsaquo;&lsaquo; {% trans "Anterior" %}</span></li>
+				    {% endif %}
+				    {% for page in cliente.pages %}
+				        {% if page %}
+				            {% ifequal page cliente.number %}
+				                <li class="now current page"><span>{{ page }}</span></li>
+				            {% else %}
+				                <li class="page"><a href="?{{ page.querystring }}" >{{ page }}</a></li>
+				            {% endifequal %}
+				        {% else %}
+				            <li class="unknown page"><span>...</span></li>
+				        {% endif %}
+				    {% endfor %}
+				    {% if cliente.has_next %}
+				        <li class="next"><a href="?{{ cliente.next_page_number.querystring }}" >{% trans "Siguiente" %} &rsaquo;&rsaquo;</a></li>
+				    {% else %}
+				        <li><span class="disabled next">{% trans "Siguiente" %} &rsaquo;&rsaquo;</span></li>
+				    {% endif %}
+				</ul>
+			</div>
+		</div>
+	</div>
+{% endblock%}

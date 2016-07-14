@@ -1,0 +1,27 @@
+{% extends 'adminfrente.html' %}
+{% block content %}
+	<div class="aliados-view">
+		<div class="table-responsive">
+			<table class="table table-bordered table-hover table-striped tablesorter">
+				<thead>
+					<tr>
+						<th>Aliados</th>
+						<th>Editar</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						{% for aliados in object_list %}
+						<tr>
+							<th>
+								<p>{{ aliados.descripcion}}</p>
+							</th>
+							<th><p><a href="{% url 'aliados_edit' aliados.id %}" class=" editar-aliados btn btn-default">Editar</a></p></th>
+						</tr>
+					{% endfor%}
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% endblock %}

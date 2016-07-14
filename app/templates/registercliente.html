@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+<div class="cliente-masxmas-form">
+	<form action="." method="POST"> 
+		{% csrf_token %}
+	    {% bootstrap_form form_a %}
+	    {% bootstrap_form form_b %}
+	{% buttons %}
+		<input type="submit" value="Registrar" class="btn btn-success"/> {{mensaje}}
+		<a href="/" class="btn btn-danger " role="button">Cancelar</a>
+	 {% endbuttons %}
+	</form>
+</div>
+{% endblock %}

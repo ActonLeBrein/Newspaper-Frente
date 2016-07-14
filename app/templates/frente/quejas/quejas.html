@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+<div class="formulario">
+	<div class="ima">
+		{% load staticfiles %}
+		<img src="{% static "imagenes/Frente_titulo.jpg" %}" alt="My image" class = 'tituloimg'/>
+	</div>
+	<h1> Quejas Frente</h1>
+	<div class="clientes-frente-resgistro">
+		<form action="." method="POST" class="form suscripciones">
+			{% csrf_token %}
+			<div class="datos">
+				<span class="glyphicon glyphicon-user form-user"></span>
+				<h6>Datos de la Queja</h6>
+			</div>
+			{% bootstrap_form form %}
+			{% buttons %}
+			{% if mensajecupon != None %}
+				<div class="mensajecupon">
+					{{mensajecupon}}
+				</div>
+			{% endif%}
+			<input type="submit" value="Registrar" class=" registrarfrente btn btn-default"/> {{mensaje}}
+			{% endbuttons %}
+		</form>
+	</div>
+	<div class="info">
+		<div class="texto_superior">
+			<p>La Ciudad de FRENTE busca recorrer la ciudad de México a partir de sus miles de posibilidades culturales, artísticas, gastronómicas, musicales, de entretenimiento y sus personajes.
+			Queremos que nuestros lectores obtenga información de gran calidad y exclusiva así como contenido único en el mercado.
+			La Ciudad de FRENTE reúne a un selecto grupo de editores y líderes de opinión que cautivan a un público ávido de información y en búsqueda de tendencias.</p>
+
+			<p>FRENTE ofrece una publicación quincenal gratuita y coleccionable que resalta entre todas las publicaciones de la ciudad de México por su contenido funcional y profundo.</p>
+			</div>
+		<!-- {% load staticfiles %}
+		<img src="{% static "imagenes/lateral.jpg" %}" alt="My image" class = 'tituloimg'/> -->
+	</div>
+</div>
+{% endblock %}

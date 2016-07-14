@@ -1,0 +1,32 @@
+{% extends 'adminfrente.html' %}
+{% block content %}
+
+<div class="consulta_quejas">
+	<div class="table-responsive">
+		<table class="table table-bordered table-hover table-striped tablesorter">
+			<thead>
+				<tr>
+					<th>Nombre         <i class="fa fa-sort"></i></th>
+					<th>Tipo de Queja         <i class="fa fa-sort"></i></th>
+					<th>ver          <i class="fa fa-sort"></i></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for q in queja %}
+					<tr>
+						<th>
+							<p>{{q.Nombre}}</p>
+						</th>
+						<th>
+							<p>{{q.Tipo_queja}}</p>
+						</th>
+						<th>
+							<p><a href="{% url 'ver_quejas' 1 q.id %}" class=" ver_quejas btn btn-default">Ver</a></p>
+						</th>
+					</tr>
+				{% endfor%}
+			</tbody>
+		</table>
+	</div>
+</div>
+{% endblock %}

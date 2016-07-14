@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="utf-8">
+<head>
+  <meta lang= "utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/estilocontrol.css">
+<link rel="stylesheet" href="/static/stylesheets/base.css">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="/static/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/app.js"></script>
+<script src="/static/js/frente.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <a href="{%url 'distribucion' %}">
+        <div class="images" href="#"></div>
+        <h1 href="#" >Administrador</h1>
+      </a>
+      <div class="headeright">
+        <div class="dropdown">
+          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+            {{ user.first_name }}
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="{% url 'contrasena_masxmas' 2 %}"><i class="fa fa-cog"> </i>  Cambiar Contraseña</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="{% url 'url_logout' %}"><i class="fa fa-sign-out"></i>  Cerrar Sesión</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="menu">
+      <ul class = "lista-menu">
+        <div class="dropdown">
+          <li class = "menu_option" id="dropdownMenu1" data-toggle="dropdown"><i class="fa fa-align-left"></i> <p>Clientes</p><span class="fa fa-caret-down"></span></li>
+          <ul class="dropdown-menu dropdown-bajo" role="menu" aria-labelledby="dropdownMenu1">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="{%url 'createClienteContro'%}"><i class="fa fa-plus-square"></i>Crear Cliente</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="{%url 'distribucion'%}"><i class="fa fa-eye"></i>Ver Clientes </a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="{%url 'distribucion'%}"><i class="fa fa-th"></i>Clientes con Bajas</a></li>
+          </ul>
+        </div>
+        <div class="dropdown">
+          <li class = "menu_option" id="dropdownMenu5" data-toggle="dropdown"><i class="fa fa-envelope"></i> <p>Quejas</p><span class="fa fa-caret-down"></span></li>
+          <ul class="dropdown-menu dropdown-bajo" role="menu" aria-labelledby="dropdownMenu5">
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="{%url 'consulta_quejasmasxmas' 2%}"><i class="fa fa-eye"></i> Ver queja </a></li>
+          </ul>
+        </div>
+      </ul>
+    </div>
+    <div class="contenido">
+      {% block content %}
+      {% endblock %}
+       {% block js %}
+      {% endblock %}
+    </div>
+  </div>
+</body>
+</html>

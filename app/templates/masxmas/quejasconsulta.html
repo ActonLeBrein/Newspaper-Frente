@@ -1,0 +1,39 @@
+{% extends 'masxmas/admin.html' %}
+{% block content %}
+
+<div class="consulta_quejas">
+	<div class="table-responsive">
+		<div class="titulos">
+			<h1>Quejas</h1>
+		</div>
+		<table class="table table-bordered table-hover table-striped tablesorter">
+			<thead>
+				<tr>
+					<th>Nombre         <i class="fa fa-sort"></i></th>
+					<th>Tipo de Queja         <i class="fa fa-sort"></i></th>
+					<th>Ver          <i class="fa fa-sort"></i></th>
+					<th>Solución          <i class="fa fa-sort"></i></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for q in queja %}
+					<tr>
+						<th>
+							<p>{{q.Nombre}}</p>
+						</th>
+						<th>
+							<p>{{q.Tipo_queja}}</p>
+						</th>
+						<th>
+							<p><a href="{% url 'ver_quejasmasxmas' 2 q.id %}" class=" ver_quejas btn btn-default">Ver</a></p>
+						</th>
+						<th>
+							<p><a href="{% url 'quejas_solucion_masxmas' q.id %}" class=" ver_quejas btn btn-default">Solución</a></p>
+						</th>
+					</tr>
+				{% endfor%}
+			</tbody>
+		</table>
+	</div>
+</div>
+{% endblock %}

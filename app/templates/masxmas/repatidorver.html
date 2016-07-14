@@ -1,0 +1,155 @@
+{% extends 'masxmas/admin.html' %}
+{% block content%}
+	<div class="clientes_masxmas">
+		<div class="table-responsive">
+			<div class="titulos">
+				<h1>Clientes</h1>
+			</div>
+			<div class="botones_exportar">
+				<p><a href="{% url 'export_info' valor %}" class=" editar-aliados btn btn-default">Hoja de Reparto <i class="fa fa-cloud-download"></i></a></p>
+				<p><a href="{% url 'tags' valor %}" class=" editar-aliados btn btn-default">Etiquetas <i class="fa fa-cloud-download"></i></a></p>
+			</div>
+			<table class="table table-bordered table-hover table-striped tablesorter">
+				<thead>
+					<tr>
+						<th>Número de entrega</th>
+						<th>Nombre</th>
+						<th>Empresa</th>
+						<th>Ruta</th>
+						<th>Embolsado</th>
+						<th>Dotación Fija</th>
+						<th>Dotación Variable</th>
+						<th>Diferencia</th>
+						<th>editar</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for a in rutas.object_list %}
+					<tr>
+						<td>
+							<p>{{a.ordenentrega}}</p>
+						</td>
+						<td>
+							<p>{{a.nombre}} {{a.apellido_Paterno}} {{a.apellido_Materno}}</p>
+						</td>
+						<td>
+							<p>{{a.empresa}}</p>
+						</td>
+						<td>
+							<p>{{a.rutas}}</p>
+						</td>
+						<td>
+							<p>{{a.embolsado}}</p>
+						</td>
+						<td>
+							<p>{{a.dotacion}}</p>
+						</td>
+						<td>
+							<div class="update_dotacion">
+								<input type="text" value ="{{a.adicional}}" class="thisdotacion" id = "{{a.id}}">
+								<button href="#" class="editar-dotacion btn btn-default ChangeDotacion">Cambiar</button>
+							</div>
+							{# <p>{{a.dotacion}}</p> #}
+						</td>
+						<td>
+						{% if  a.total < 0 %}
+							<p class="{{a.id}}" style="color:red">{{a.total}}</p>
+						{% else %}
+							<p class="{{a.id}}">{{a.total}}</p>
+						{% endif %}
+						</td>
+						<th><p><a href="{% url 'edit_clientesmasxmas' a.id %}" class=" editar-aliados btn btn-default">Editar</a></p></th>
+					</tr>
+					{% endfor %}
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>Total</td>
+						<td class="total_dot">{{total_dot}}</td>
+						{% if  total_adi > 0 %}	
+							<td class="total_adi">{{total_adi}}</td>
+						{% else %}
+							|<td class="total_adi" style="color:red">{{total_adi}}</td>
+						{% endif %}
+						{% if  total_tot > 0 %}	
+							<td class="total_tot">{{total_tot}}</td>
+						{% else %}
+							|<td class="total_tot" style="color:red">{{total_tot}}</td>
+						{% endif %}
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+			{% load i18n %}
+			<div class="paginas">
+				<ul class="pagination">
+				    {% if rutas.has_previous %}
+				        <li class="previous"><a href="?{{ rutas.previous_page_number.querystring }}" >&lsaquo;&lsaquo; {% trans "Anterior" %}</a></li>
+				    {% else %}
+				        <li  class="disabled prev" ><span>&lsaquo;&lsaquo; {% trans "Anterior" %}</span></li>
+				    {% endif %}
+				    {% for page in rutas.pages %}
+				        {% if page %}
+				            {% ifequal page rutas.number %}
+				                <li class="now current page"><span>{{ page }}</span></li>
+				            {% else %}
+				                <li class="page"><a href="?{{ page.querystring }}" >{{ page }}</a></li>
+				            {% endifequal %}
+				        {% else %}
+				            <li class="unknown page"><span>...</span></li>
+				        {% endif %}
+				    {% endfor %}
+				    {% if rutas.has_next %}
+				        <li class="next"><a href="?{{ rutas.next_page_number.querystring }}" >{% trans "Siguiente" %} &rsaquo;&rsaquo;</a></li>
+				    {% else %}
+				        <li><span class="disabled next">{% trans "Siguiente" %} &rsaquo;&rsaquo;</span></li>
+				    {% endif %}
+				</ul>
+			</div>
+		</div>
+	</div>
+{% endblock%}
+{% block js%}
+<script>
+	$('.ChangeDotacion').on('click', inicio);
+	function inicio(){
+		var dota = $(this).parent().children('input:first').val();
+		var id = $(this).parent().children('input:first').attr("id");
+		var rutas = {{valor}};
+		var victima = $(this).parents('tr:first').find('.total');
+		var r = confirm("Desea Guardar los cambios");
+		if  (r === true) {
+			$.ajax({
+				data : {'dotacion':dota, 'id':id, 'rutas':rutas},
+				url: '/distribucion/dotacion/',
+				type: 'get',
+				success: function(data){
+					console.log(data);
+					/*console.log(data.total_adi);
+					console.log(data.total_tot);*/
+					if (parseInt(data[0]['tf']) > 0){
+						$('.'+id).html(data[0]['tf']);
+					}
+					else {
+						$('.'+id).css('color','red').html(data[0]['tf']);
+					}
+					if (parseInt(data[0]['total_adi']) > 0){
+						$('.total_adi').html(data[0]['total_adi']);
+					}
+					else {
+						$('.total_adi').css('color','red').html(data[0]['total_adi']);
+					}
+					if (parseInt(data[0]['total_tot']) > 0){
+						$('.total_tot').html(data[0]['total_tot']);
+					}
+					else {
+						$('.total_tot').css('color','red').html(data[0]['total_tot']);
+					}
+				}
+			});
+	    }
+	}
+</script>	
+{% endblock%}

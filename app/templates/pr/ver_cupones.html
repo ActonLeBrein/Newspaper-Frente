@@ -1,0 +1,35 @@
+{% extends "pr/admin.html"%}
+{% block content %}
+<div class="row">
+	<div class="table-responsive">
+		<table class ="table table-hover table-striped tablesorter">
+			<thead>
+				<tr>
+					<th>Cupon<i class="fa fa-sort"></i></th>
+					<th>Usado<i class="fa fa-sort"></i></th>
+					<th>Mail<i class="fa fa-sort"></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for a in cupones %}
+					{% if a.cuponusado == 0 %}
+						<tr class="danger">
+							<td><p>{{a.cupon}}</p></td>
+							<td><p>No</p></td>
+							<td><p>{{a.mail_cliente}}</p></td>
+						</tr>
+					{% elif a.cuponusado == 1 %}
+						<tr class="success">
+							<td><p>{{a.cupon}}</p></td>
+							<td class="success">
+								<p>Sí</p>
+							</td>
+							<td><p>{{a.mail_cliente}}</p></td>
+						</tr>
+					{% endif %}
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</div>
+{% endblock %}

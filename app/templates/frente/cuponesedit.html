@@ -1,0 +1,20 @@
+{% extends 'adminfrente.html' %}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}{% block content %}
+	<div class="clientes-frente-update">
+		<form action="" method="POST" class="form suscripciones">
+			<h1>Agregar un Nuevo Cupón</h1>
+			{% csrf_token %}
+			{% bootstrap_form form %}
+			{% buttons %}
+			<input type="submit" value="Registrar" class=" registrarfrente btn btn-default"/> {{mensaje}}
+			{% endbuttons %}
+		</form>
+	</div>
+{% endblock %}

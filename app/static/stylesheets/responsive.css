@@ -1,0 +1,19 @@
+@media only screen and (min-width: 960px) {
+	.login{
+		float:none !important;
+		margin: 0 auto !important;
+	}
+}
+ 
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width: 479px) {
+	.container{
+		margin: 0px !important;
+		padding: 0px !important;
+		height: 100% !important;
+	}
+	.login img{
+		width: 90%;
+		height: 60px;
+	}
+}

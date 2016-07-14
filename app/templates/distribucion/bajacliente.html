@@ -1,0 +1,29 @@
+{% extends 'distribucion/admin.html' %}
+{% block content %}
+<div>
+	<div class="titulos">
+		<h1>Eliminar Un Cliente</h1>
+	</div>
+	<form method="post">
+		{% csrf_token %}
+		<p>Estas Seguro de Desactivar este usuario "
+			{% if object.apellido_Paterno = 'NONAME' %}
+				N/A
+			{% else %}
+				{{object.apellido_Paterno}}
+			{% endif %}
+			{% if object.apellido_Materno = 'NONAME' %}
+				N/A
+			{% else %}
+				{{ object.apellido_Materno}}
+			{% endif %}
+			{% if object.nombre = 'NONAME' %}
+				N/A
+			{% else %}
+				{{object.nombre}}
+			{% endif %}" ?</p>
+		<input type="submit" value="Submit" class="eliminarpr btn btn-danger"/>
+		<a class = "btn btn-default"href="{% url 'distribucion'%}">Cancelar</a>
+	</form>
+</div>
+{% endblock %}
